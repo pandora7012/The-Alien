@@ -19,4 +19,5 @@ public class Collectable408 : MonoBehaviour
     }
     
     
+    
 }

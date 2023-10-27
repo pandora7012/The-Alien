@@ -16,8 +16,8 @@ public class Controller408 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    
-    void Update()
+
+    public void Controlling()
     {
         if (Input.GetKey(KeyCode.D))
         {
@@ -33,7 +33,7 @@ public class Controller408 : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
