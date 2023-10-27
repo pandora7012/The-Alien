@@ -19,6 +19,7 @@ public class Controller408 : MonoBehaviour
 
     public void Controlling()
     {
+        Debug.LogError("ajajaja");
         if (Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);

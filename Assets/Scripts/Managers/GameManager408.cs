@@ -23,7 +23,7 @@ public class GameManager408 : Singleton408<GameManager408>
 
     public void NextChapter()
     {
-        
+        Debug.LogError("NEXT CHAPTER");
     }
     
     public void GetToChapter(int level)

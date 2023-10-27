@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player408 : MonoBehaviour
 {
-    public Animation anim;
+    public Animator anim;
     [SerializeField] private Controller408 controller;
     [SerializeField] private Health408 health;
 
