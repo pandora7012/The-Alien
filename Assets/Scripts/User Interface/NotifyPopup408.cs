@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NotifyPopup408 : Panel408
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    private Utilities.Task task;
+    private TextMeshProUGUI messageText;
+    
+    public override void OnShow()
     {
-        
+        base.OnShow();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public override void OnHide()
     {
-        
+        base.OnHide();
+        task?.Invoke();
     }
+    
+    public void Init(string text, Utilities.Task task)
+    {
+        this.task = task;
+        messageText.text = text;
+    }
+    
+    
 }

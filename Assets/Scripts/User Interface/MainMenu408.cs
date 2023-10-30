@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class MainMenu408 : Panel408
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnShow()
+    {
+        base.OnShow();
+    }
+
+    public override void OnHide()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPlayBtn()
     {
-        
+        var mainGameUI = UIManager408.Instance.GetPanel<MainMenu408>();
+        this.OnHide();
     }
+
+    public void ContinueBtn()
+    {
+        if (PrefInfo408.GetChapter() is 0)
+            UIManager408.Instance.GetPanel<NotifyPopup408>().OnShow();
+        else 
+            UIManager408.Instance.GetPanel<MainGame408>().OnShow();
+    }
+    
 }

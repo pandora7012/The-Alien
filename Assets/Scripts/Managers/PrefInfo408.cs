@@ -14,4 +14,14 @@ public static class PrefInfo408
         return PlayerPrefs.GetInt("Coin");
     }
 
+    public static int GetChapter()
+    {
+        return PlayerPrefs.GetInt("Chapter", 0);
+    }
+    
+    public static void SetChapter(int level)
+    {
+        PlayerPrefs.SetInt("Chapter", level);
+    }
+
 }

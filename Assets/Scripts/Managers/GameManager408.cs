@@ -1,10 +1,12 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager408 : Singleton408<GameManager408>
 {
     public int coins;
+    public GameObject[] maps; 
     
     public void AddCoins(int amount)
     {
@@ -33,7 +35,7 @@ public class GameManager408 : Singleton408<GameManager408>
 
     public void ChapterComplete()
     {
-
+        SceneManager.LoadScene(PrefInfo408.GetChapter());
     }
     
     

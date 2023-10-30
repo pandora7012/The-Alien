@@ -9,12 +9,14 @@ public class Panel408 : MonoBehaviour
     private Task task;
     private TextMeshProUGUI messageText; 
     
-    public virtual void OnCreate()
-    {
-        
-    }
 
     public virtual void OnShow()
+    {
+
+
+    }
+
+    public virtual void OnHide()
     {
         
     }

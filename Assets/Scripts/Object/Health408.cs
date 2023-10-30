@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class Health408 : MonoBehaviour
     public int maxHealth;
     [SerializeField] Image healthVisualize;
 
+    
+    [Button]
     public void TakeDamage(int damage)
     {
         health -= damage;
