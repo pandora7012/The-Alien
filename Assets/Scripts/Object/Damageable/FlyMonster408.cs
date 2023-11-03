@@ -14,9 +14,4 @@ public class FlyMonster408 : Damageable408
         patrolling408.Patrolling();
     }
 
-    protected override void DoDamage()
-    {
-        base.DoDamage();
-        
-    }
 }

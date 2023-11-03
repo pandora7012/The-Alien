@@ -9,21 +9,20 @@ public class MainGame408 : Panel408
             base.OnShow();
             Time.timeScale = 1;
         }
-    
-        public void OnPause()
-        {
-            Time.timeScale = 0;
-        }
-
+       
         public void SettingBtn()
         {
-            
+            var settingPopup = UIManager408.Instance.GetPanel<SettingPopup408>();
+            settingPopup.OnShow();
         }
         
         public void UpgradeBtn()
         {
-            
+            var settingPopup = UIManager408.Instance.GetPanel<UpgradeUI408>();
+            settingPopup.OnShow();
         }
+        
+        
         
         
         
