@@ -13,5 +13,19 @@ public class FlyMonster408 : Damageable408
     {
         patrolling408.Patrolling();
     }
+    
+    protected override void DoDamage(GameObject other)
+    {
+        base.DoDamage(other);
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<Player408>().TakeDamage(1);
+        }
+    }
+    
+    public void TakeDamage(int damage)
+    {
+        health.TakeDamage(damage);
+    }
 
 }

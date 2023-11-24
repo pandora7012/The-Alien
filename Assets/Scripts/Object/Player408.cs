@@ -1,53 +1,56 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player408 : MonoBehaviour
 {
-    public Animator anim;
-    [SerializeField] private Controller408 controller; // 플레이어 컨트롤러
-    [SerializeField] private Health408 health; // 체력
-    private bool _isUnstoppable; // 무적 상태인지 아닌지
-    [SerializeField] private Animator animator;
-    
-    
+    [SerializeField] private Controller408 controller; 
+    [SerializeField] private Health408 health;
+    private bool isUnstoppable; 
+
+
     private void Update()
     {
-        controller.Controlling(); 
-        animator.SetFloat("Velocity" , GetComponent<Rigidbody2D>().velocity.x);
+        controller.Controlling();
+        GetComponent<Animator>().SetFloat("Velocity",
+            GetComponent<Rigidbody2D>().velocity.x);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private IEnumerator UnstoppableState()
     {
-        
+        isUnstoppable = true;
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+        yield return new WaitForSeconds(3f); 
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+        isUnstoppable = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void StartUnstoppable()
     {
-        if (other.gameObject.CompareTag($"Damageable"))
+        StartCoroutine(UnstoppableState());
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (isUnstoppable) return; 
+        health.TakeDamage(damage);
+        if (health.health <= 0)
         {
-            if (_isUnstoppable) return; // 무적 상태라면 데미지를 입지 않는다.
-            TakeDamage(1);
-            StartUnstoppableState();
+            OnDie();
+        }
+        else
+        {
+            StartCoroutine(UnstoppableState());
         }
     }
 
-    private IEnumerator ToGoUnstoppableState()
+    private void OnDie()
     {
-        _isUnstoppable = true;
-        yield return new WaitForSeconds(3f); // 3초간 무적 상태
-        _isUnstoppable = false;
+        gameObject.SetActive(false);
+        health.OnDie();
+        UIManager408.Instance.GetPanel<NotifyPopup408>().OnSetup("Notice", "Game Over");
     }
-    
-    private void StartUnstoppableState()
-    {
-        StartCoroutine(ToGoUnstoppableState());
-    }
-    
-    public void TakeDamage(int damage)
-    {
-        health.TakeDamage(damage);
-    }
-    
 }

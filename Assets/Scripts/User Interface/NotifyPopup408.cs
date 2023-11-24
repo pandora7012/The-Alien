@@ -5,26 +5,35 @@ using UnityEngine;
 
 public class NotifyPopup408 : Panel408
 {
-    
-    private Utilities.Task task;
-    private TextMeshProUGUI messageText;
-    
+    [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private TextMeshProUGUI tittleText;
+
     public override void OnShow()
     {
         base.OnShow();
     }
-    
+
     public override void OnHide()
     {
         base.OnHide();
-        task?.Invoke();
+        switch (messageText.text)
+        {
+            case "Congratulations!":
+                //  GameManager408.Instance.OnGameWin();
+                break;
+            case "Game Over":
+                GameManager408.Instance.OnGameOver();   
+                break;
+            case "You have collected energy capsules on this map":
+                GameManager408.Instance.NextChapter();
+                break; 
+        }
     }
-    
-    public void Init(string text, Utilities.Task task)
+
+    public void OnSetup(string tittle, string message)
     {
-        this.task = task;
-        messageText.text = text;
+        gameObject.SetActive(true);
+        messageText.text = message;
+        tittleText.text = tittle;
     }
-    
-    
 }

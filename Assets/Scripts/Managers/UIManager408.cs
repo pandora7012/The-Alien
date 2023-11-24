@@ -8,6 +8,7 @@ public class UIManager408 : Singleton408<UIManager408>
     
     [SerializeField] private List<Panel408> panels;
     
+    
     public T GetPanel<T>() where T : Panel408
     {
         var panel = panels.Find(x => x is T) as T;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Damageable408 : MonoBehaviour
 {
+
+    [SerializeField] private int damage; 
+      
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         DoDamage(other.gameObject);

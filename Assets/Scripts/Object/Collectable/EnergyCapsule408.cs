@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnergyCapsule408 : Collectable408
 {
     protected override void Collect()
-    { 
-        Debug.LogError("Show Popup Noti ");
-        GameManager408.Instance.NextChapter();
+    {
+        GameManager408.Instance.SaveData();
+        UIManager408.Instance.GetPanel<NotifyPopup408>()
+            .OnSetup("Congratulations!", "You have collected energy capsules on this map");
         base.Collect();
     }
 }

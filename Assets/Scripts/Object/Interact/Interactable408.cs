@@ -15,6 +15,6 @@ public class Interactable408 : MonoBehaviour
     
     protected virtual void DoInteract()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

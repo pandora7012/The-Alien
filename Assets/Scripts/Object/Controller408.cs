@@ -5,13 +5,13 @@ using UnityEngine;
 public class Controller408 : MonoBehaviour
 {
     private Rigidbody2D rb;
-    
+
     private float speed = 1f;
     private float jumpForce = 2.5f;
-    
+
     private bool isGrounded;
-    
-    
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,6 +19,12 @@ public class Controller408 : MonoBehaviour
 
     public void Controlling()
     {
+
+
+        speed = UpgradeManager408.Instance.GetSpeedValue();
+        jumpForce = UpgradeManager408.Instance.GetJumpValue();
+
+
         if (Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -39,7 +45,7 @@ public class Controller408 : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -47,7 +53,7 @@ public class Controller408 : MonoBehaviour
             isGrounded = true;
         }
     }
-    
+
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -55,6 +61,5 @@ public class Controller408 : MonoBehaviour
             isGrounded = false;
         }
     }
-    
-    
+
 }

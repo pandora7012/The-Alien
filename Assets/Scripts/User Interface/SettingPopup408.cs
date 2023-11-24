@@ -10,12 +10,12 @@ public class SettingPopup408 : Panel408
         Time.timeScale = 0;
     }
 
-    public void ToggleMusic()
+    public void MusicToggle()
     {
         AudioManager408.Instance.ToggleMusic();
     }
     
-    public void ToggleSound()
+    public void SfxToggle()
     {
         AudioManager408.Instance.ToggleSound();
     }

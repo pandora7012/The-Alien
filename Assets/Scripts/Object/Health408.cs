@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -6,12 +7,9 @@ using UnityEngine.UI;
 
 public class Health408 : MonoBehaviour
 {
-    public int health = 3;
-    public int maxHealth;
+    [SerializeField] public int health;
     [SerializeField] Image healthVisualize;
 
-    
-    [Button]
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -21,14 +19,29 @@ public class Health408 : MonoBehaviour
         OnDie();
     }
 
-    private void OnDie()
+    public void OnDie()
     {
+        if (gameObject.CompareTag("Player"))
+            return;
         gameObject.SetActive(false);
     }
 
     private void VisualUpdate()
     {
-        healthVisualize.fillAmount = (float)health / maxHealth;
+        if (gameObject.CompareTag("Player"))
+        {
+            UIManager408.Instance.GetPanel<MainGame408>().OnRefresh();
+        }
+        else
+        {
+            if (gameObject.CompareTag("GroundMonster"))
+            {
+                healthVisualize.fillAmount =  1 - health / 2f;
+            }
+            else
+            {
+                healthVisualize.fillAmount = 1 - health / 1f;
+            }
+        }
     }
-    
 }

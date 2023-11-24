@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class Utilities : MonoBehaviour
 {
-    public delegate void Task(); 
+    public delegate void Task();
 }

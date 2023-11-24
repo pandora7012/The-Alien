@@ -15,7 +15,7 @@ public class Collectable408 : MonoBehaviour
     
     protected virtual void Collect()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     
     
