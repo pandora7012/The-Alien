@@ -15,6 +15,7 @@ public class NotifyPopup408 : Panel408
 
     public override void OnHide()
     {
+        AudioManager408.Instance.PlaySound(0, 1);
         base.OnHide();
         switch (messageText.text)
         {
@@ -22,7 +23,7 @@ public class NotifyPopup408 : Panel408
                 //  GameManager408.Instance.OnGameWin();
                 break;
             case "Game Over":
-                GameManager408.Instance.OnGameOver();   
+                GameManager408.Instance.BackToMain();   
                 break;
             case "You have collected energy capsules on this map":
                 GameManager408.Instance.NextChapter();

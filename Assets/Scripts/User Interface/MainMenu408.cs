@@ -19,6 +19,8 @@ public class MainMenu408 : Panel408
 
     public void OnClickStartBtn()
     {
+
+        AudioManager408.Instance.PlaySound(0, 1);
         if (PrefInfo408.GetChapter() is 0)
         {
             GameManager408.Instance.StartNewGame();
@@ -42,6 +44,8 @@ public class MainMenu408 : Panel408
 
     public void OnClickContinueBtn()
     {
+
+        AudioManager408.Instance.PlaySound(0, 1);
         if (PrefInfo408.GetChapter() is 0)
             UIManager408.Instance.GetPanel<NotifyPopup408>().OnSetup("Message", "You have no saved game progress");
         else

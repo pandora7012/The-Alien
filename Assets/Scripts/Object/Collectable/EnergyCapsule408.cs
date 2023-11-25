@@ -10,5 +10,6 @@ public class EnergyCapsule408 : Collectable408
         UIManager408.Instance.GetPanel<NotifyPopup408>()
             .OnSetup("Congratulations!", "You have collected energy capsules on this map");
         base.Collect();
+        AudioManager408.Instance.PlaySound(3, 1);
     }
 }

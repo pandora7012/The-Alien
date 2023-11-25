@@ -12,6 +12,7 @@ public class GroundMonster408 : Damageable408
     private void Update()
     {
         patrolling408.Patrolling();
+        
     }
 
    protected override void DoDamage(GameObject other)

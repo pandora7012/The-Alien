@@ -33,6 +33,11 @@ public class GameManager408 : Singleton408<GameManager408>
     {
         var currentLevel = PrefInfo408.GetChapter();
 
+        if (currentLevel > 3)
+        {
+            OnCompleteGame();
+            return;
+        }
 
         for (int i = 0; i < maps.Length; i++) maps[i].gameObject.SetActive(i == currentLevel - 1);
 
@@ -40,11 +45,13 @@ public class GameManager408 : Singleton408<GameManager408>
     }
 
     public void OnCompleteGame()
-    {   
+    {
+        PrefInfo408.SetChapter(3);
+        BackToMain();
     }
 
 
-    public void OnGameOver()
+    public void BackToMain()
     {
         UIManager408.Instance.GetPanel<MainGame408>().OnHide();
         UIManager408.Instance.GetPanel<MainMenu408>().OnShow();
@@ -54,10 +61,19 @@ public class GameManager408 : Singleton408<GameManager408>
         }
     }
 
+   
+
 
     public void StartNewGame()
     {
+
+        var m = PlayerPrefs.GetInt("Music", 1);
+        var s = PlayerPrefs.GetInt("SFX", 1);
+
         PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetInt("Music", m);
+        PlayerPrefs.SetInt("SFX", s);
         PrefInfo408.SetCoin(0);
         //  coins = 0;
         PrefInfo408.SetChapter(1);

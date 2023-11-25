@@ -37,6 +37,7 @@ public class Player408 : MonoBehaviour
     {
         if (isUnstoppable) return; 
         health.TakeDamage(damage);
+        AudioManager408.Instance.PlaySound(2,1);
         if (health.health <= 0)
         {
             OnDie();

@@ -44,13 +44,15 @@ public class MainGame408 : Panel408
 
     public void OnUpgradeClick()
     {
+        AudioManager408.Instance.PlaySound(0, 1);
         var settingPopup = UIManager408.Instance.GetPanel<UpgradeUI408>();
         settingPopup.OnSetup();
     }
 
     public void OnSettingClick()
-    { ;
-        
+    {
+        AudioManager408.Instance.PlaySound(0, 1);
+
         var settingPopup = UIManager408.Instance.GetPanel<SettingPopup408>();
         settingPopup.OnShow();
     }

@@ -8,6 +8,7 @@ public class Coin408 : Collectable408
     {
         base.Collect();
         GameManager408.Instance.AddCoins(1);
+        AudioManager408.Instance.PlaySound(1 , 1);
         gameObject.SetActive(false);
     }
 }

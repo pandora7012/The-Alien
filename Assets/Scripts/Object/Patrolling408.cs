@@ -21,6 +21,8 @@ public class Patrolling408 : MonoBehaviour
         if (Vector3.Distance(child.localPosition, waypoints[currentWaypointIndex].localPosition) < 0.001f)
         {
             currentWaypointIndex = currentWaypointIndex == 0 ? 1 : 0;
+            if (gameObject.CompareTag("GroundMonster"))
+                transform.GetChild(0). GetComponent<SpriteRenderer>().flipX =  currentWaypointIndex ==  0 ? false : true;
         }
     }
 }

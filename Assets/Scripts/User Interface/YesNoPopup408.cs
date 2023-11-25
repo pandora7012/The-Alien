@@ -29,12 +29,14 @@ public class YesNoPopup408 : Panel408
     public void OnClickYes()
     {
         TaskOnYes?.Invoke();
+        AudioManager408.Instance.PlaySound(0, 1);
         Time.timeScale = 1;
         OnHide();
     }
 
     public override void OnHide()
     {
+        AudioManager408.Instance.PlaySound(0, 1);
         gameObject.SetActive(false);
         Time.timeScale = 1;
     }

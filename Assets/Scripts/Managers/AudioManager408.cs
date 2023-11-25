@@ -5,40 +5,63 @@ using UnityEngine;
 public class AudioManager408 : Singleton408<AudioManager408>
 {
 
-    public SFX sfx;
 
-    [SerializeField] private Sprite soundOn, soundOff, musicOn, musicOff; 
-    
-    
+    [SerializeField] private AudioClip musicClip;
+    [SerializeField] private AudioClip[] soundClips;
+
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource sfxSource;
+
+    public bool isMusicOn;
+    public bool isSfxOn;
+
+
+
+    protected override void OnInit()
+    {
+        base.OnInit();
+        PlayMusic(musicClip , 1);
+    }
+
+
     public void ToggleMusic()
     {
-        throw new System.NotImplementedException();
+        if (PlayerPrefs.GetInt("Music", 1) == 1)
+        {
+            PlayerPrefs.SetInt("Music", 0);
+            musicSource.Stop();
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Music", 1);
+            musicSource.Play();
+        }
+
+   
     }
     
     public void ToggleSound()
     {
-        throw new System.NotImplementedException();
+        if (PlayerPrefs.GetInt("SFX" , 1) == 1)
+            PlayerPrefs.SetInt("SFX", 0);
+        else
+            PlayerPrefs.SetInt("SFX", 1);
+    }
+
+    public void PlaySound(int id, float vol)
+    {
+        if (PlayerPrefs.GetInt("SFX", 1) == 0) return;
+        sfxSource.PlayOneShot(soundClips[id], vol);
     }
     
-    public void PlaySound(AudioClip clip)
+    public void PlayMusic(AudioClip clip, float vol)
     {
-        throw new System.NotImplementedException();
-    }
-    
-    public void PlayMusic(AudioClip clip)
-    {
-        throw new System.NotImplementedException();
+        if (PlayerPrefs.GetInt("Music", 1) == 0) return;
+        musicSource.clip = clip;
+        musicSource.volume = vol;
+        musicSource.Play();
     }
     
     
 }
 
-public enum SFX
-{
-    ButtonClick,
-    PlayerMove,
-    PlayerJump,
-    PlayerHurt,
-    CollectCoin,
-    CollectEnergy
-}

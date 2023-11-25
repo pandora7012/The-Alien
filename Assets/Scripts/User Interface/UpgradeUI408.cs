@@ -73,6 +73,8 @@ public class UpgradeUI408 : Panel408
 
     public void OnSave()
     {
+
+        AudioManager408.Instance.PlaySound(0, 1);
         forResetJump = healthLevel;
         forResetSpeed = speedLevel;
         forResetHP = jumpLevel;
@@ -82,6 +84,8 @@ public class UpgradeUI408 : Panel408
 
     public void OnReset()
     {
+
+        AudioManager408.Instance.PlaySound(0, 1);
         healthLevel = forResetHP;
         speedLevel = forResetSpeed;
         jumpLevel = forResetJump;
