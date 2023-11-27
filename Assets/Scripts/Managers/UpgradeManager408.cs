@@ -9,11 +9,6 @@ public class UpgradeManager408 : Singleton408<UpgradeManager408>
     public  UpgradeData408 jumpData;
 
 
-    public void ApplyForPlayer(int health, int speed, int jump)
-    {
-        
-    }
-
     public void SaveUpgradeData()
     {
         var ui = UIManager408.Instance.GetPanel<UpgradeUI408>();
